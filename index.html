@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eco&Commerce</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="./styles/global.css">
+  <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body>
+  <header>
+    <nav id="navbar">
+      <section class="hd-grid">
+        <div class="left-icons">
+          <span class="material-symbols-outlined">search</span>
+        </div>
+
+        <a href="./index.html" class="logo">Eco&Commerce</a>
+
+        <div class="right-icons">
+          <a href="../pages/login/login.html"><span class="material-symbols-outlined">person</span></a>
+          <a href=""><span class="material-symbols-outlined">shopping_cart</span></a>
+          <a href=""><span class="material-symbols-outlined">favorite</span></a>
+        </div>
+      </section>
+
+      <ul class="categorias">
+        <li><a href="./pages/products/products.html">Roupas</a></li>
+        <li><a href="./pages/products/products.html">Cosméticos</a></li>
+        <li><a href="./pages/products/products.html">Materiais</a></li>
+        <li><a href="./pages/products/products.html">Artesanato</a></li>
+        <li><a href="./pages/products/products.html">Plantas</a></li>
+        <li><a href="./pages/products/products.html">Móveis</a></li>
+      </ul>
+
+    </nav>
+  </header>
+  <main>
+
+  <section class="slide-container">
+    <div class="slide">
+      <img src="/imgs/img-descontos.png">
+      <div class="legenda">
+        <h2>Crie sua conta</h2>
+        <p>Faça login agora e tenha acesso a descontos de até 50% em todo site.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="/imgs/img-frete.png">
+      <div class="legenda">
+        <h2>Frete Grátis</h2>
+        <p>Aproveite compras e devoluções gratuitas em nosso site.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="/imgs/img-essencia.jpg">
+      <div class="legenda">
+        <h2>Nossa Essência</h2>
+        <p>Amor, carinho e sustentabilidade em cada detalhe.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="/imgs/img-excelencia.jpg">
+      <div class="legenda">
+        <h2>Excelência Verde</h2>
+        <p>Produtos de alta qualidade, ambientalmente conscientes.</p>
+      </div>
+    </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  </section>
+
+<div class="paginacao">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+</div>
+
+    <div id="voltar-inicio">
+      <h2><a href="#navbar">Voltar ao Início</a></h2>
+    </div>
+  </main>
+  <footer>
+    <section>
+      <ul class="nossa-empresa">
+        <li>
+          <h2>Nossa Empresa</h2>
+        </li>
+        <li><a href="#">Sustentabilidade</a></li>
+        <li><a href="#">Sobre o Eco&Commerce</a></li>
+        <li><a href="#">Políticas de Privacidade</a></li>
+        <li><a href="#">Termo e Condições Gerais de Uso</a></li>
+        <li><a href="#">Políticas de Troca e Devolução</a></li>
+        <li><a href="#">Newletter</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+      <ul class="atendimento">
+        <li>
+          <h2>Atendimento</h2>
+        </li>
+        <li><a href="#">Políticas de Pagamento</a></li>
+        <li><a href="#">Entre em Contato</a></li>
+        <li><a href="#">Centro de Preferência</a></li>
+        <li><a href="#">Perguntas Frequentes</a></li>
+        <li><a href="#">Acessibilidade</a></li>
+        <li><a href="#">Ajuda</a></li>
+      </ul>
+      <ul id="redes-sociais">
+        <li><a href="#"><img src="./imgs/Icons/instagram.svg"/></a></li>
+        <li><a href="#"><img src="./imgs/Icons/facebook.svg"/></a></li>
+        <li><a href="#"><img src="./imgs/Icons/twitter.svg"/></a></li>
+        <li><a href="#"><img src="./imgs/Icons/tiktok.svg"/></a></li>
+      </ul>
+    </section>
+    <div id="direitos-reservados">
+      <p>© ECO&COMMERCE 2024 - Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <script src="./scripts/index.js"></script>
+</body>
+
+</html>
