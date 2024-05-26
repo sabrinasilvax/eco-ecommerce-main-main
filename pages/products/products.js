@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
   initializeCart();
@@ -25,15 +26,11 @@ function renderProducts() {
     <p class="price">R$${product.price}</p>
 
     <div class="container-buttons">
-    <button class="btn-hover-white">Ver mais</button>
+    <a href="../product-details/product-details.html?id=${product.id}"><button class="btn-hover-white")>Ver mais</button></a>
     <div class="buttons">
-      ${store.isProductInCart(product.id)
-        ? `<button class="remove" onclick="handleRemoveFromCart(${product.id})"><span class="material-symbols-outlined">
-        remove_shopping_cart
-        </span></button>`
-        : `<button class="add" onclick="handleAddToCart(${product.id})"><span class="material-symbols-outlined">
+        <button class="add" onclick="handleAddToCart(${product.id})"><span class="material-symbols-outlined">
         add_shopping_cart
-        </span></button>`}
+        </span></button>
     </div>
     </div>
   `;
@@ -46,6 +43,7 @@ function handleAddToCart(productId) {
   if (product) {
     store.addToCart(product);
     renderCart();
+    showPopup("Item adicionado ao carrinho!", true);
   }
 }
 
@@ -54,6 +52,7 @@ function handleRemoveFromCart(productId) {
   if (product) {
     store.removeFromCart(product);
     renderCart();
+    showPopup("Item removido do carrinho!", false);
   }
 }
 
@@ -82,12 +81,18 @@ function renderCart() {
   store.state.cart.forEach(product => {
     const cartItem = document.createElement("li");
     cartItem.innerHTML = `
-    ${product.title} - R$${product.price} 
- 
-    <input type="number" min="1" value="${product.quantity}" class="quantity" data-id="${product.id}">
-    
-    <button class="remove" onclick="handleRemoveFromCart(${product.id})">X</button>
+    <section>
+      <div>
+        <h3 class="product-title-cart">${product.title}</h3> <p class="product-price-cart">R$${product.price}</p>
+        <div class="quantidade">
+          <p class="text-quantidade">Quantidade</p>
+          <input type="number" min="1" value="${product.quantity}" class="quantity" data-id="${product.id}">
+        </div>
+      </div>
+      <button class="remove" onclick="handleRemoveFromCart(${product.id})">X</button>
+    </section>
   `;
+  
     cartList.appendChild(cartItem);
     subtotal += product.price * product.quantity;
   });
@@ -117,29 +122,20 @@ function updateCartQuantities() {
   });
 }
 
-
-const store = {
-  state: {
-    cart: []
-  },
-  addToCart(product) {
-    const cartProduct = this.state.cart.find(p => p.id === product.id);
-    if (cartProduct) {
-      cartProduct.quantity += 1;
-    } else {
-      this.state.cart.push({ ...product, quantity: 1 }); 
-    }
-  },
-  removeFromCart(product) {
-    this.state.cart = this.state.cart.filter(p => p.id !== product.id);
-  },
-  isProductInCart(productId) {
-    return this.state.cart.some(p => p.id === productId);
-  },
-  updateCartQuantity(product, quantity) {
-    const cartProduct = this.state.cart.find(p => p.id === product.id);
-    if (cartProduct) {
-      cartProduct.quantity = quantity;
-    }
+function showPopup(message, isAdd) {
+  var popup = document.getElementById('cartPopup');
+  popup.textContent = message;
+  
+  if (isAdd) {
+      popup.classList.add('cartadd');
+      popup.classList.remove('cartremove');
+  } else {
+      popup.classList.add('cartremove');
+      popup.classList.remove('cartadd');
   }
-};
+  
+  popup.classList.add('show');
+  setTimeout(function() {
+      popup.classList.remove('show');
+  }, 3000);
+}

@@ -21,7 +21,7 @@
 
         <div class="right-icons">
           <a href="../pages/login/login.html"><span class="material-symbols-outlined">person</span></a>
-          <a href=""><span class="material-symbols-outlined">shopping_cart</span></a>
+          <a href="#" id="cartToggle"><span class="material-symbols-outlined">shopping_cart</span></a> 
           <a href=""><span class="material-symbols-outlined">favorite</span></a>
         </div>
       </section>
@@ -77,16 +77,31 @@
 
   </section>
 
-<div class="paginacao">
+  <div class="paginacao">
     <span class="dot" onclick="currentSlide(1)"></span>
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
     <span class="dot" onclick="currentSlide(4)"></span>
-</div>
+  </div>
 
-    <div id="voltar-inicio">
-      <h2><a href="#navbar">Voltar ao Início</a></h2>
+
+  <aside id="cartAside" class="cart-aside">
+    <div class="carrinho-close">
+      <button class="close-button">X</button>
+      <h2>Carrinho</h2>
     </div>
+    
+    <div class="container-cart">
+      <ul id="cartList"></ul>
+      <h4 id="subtotal-cartAside"></h4>
+      <a href="./pages/product-list/product-list.html" class="finish">Concluir compra</a>
+    </div>
+  </aside>
+ <div id="products-container" class="container"></div>
+ <div id="voltar-inicio">
+    <h2><a href="#navbar">Voltar ao Início</a></h2>
+ </div>
+  <div id="cartPopup" class="cart-popup"></div>
   </main>
   <footer>
     <section>
@@ -126,6 +141,8 @@
   </footer>
 
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/store.js"></script>
+  <script src="./scripts/data/products.js"></script>
 </body>
 
 </html>
