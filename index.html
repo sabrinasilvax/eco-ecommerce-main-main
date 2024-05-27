@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,87 +22,86 @@
 
         <div class="right-icons">
           <a href="../pages/login/login.html"><span class="material-symbols-outlined">person</span></a>
-          <a href="#" id="cartToggle"><span class="material-symbols-outlined">shopping_cart</span></a> 
+          <a href="#" id="cartToggle"><span class="material-symbols-outlined">shopping_cart</span></a>
           <a href=""><span class="material-symbols-outlined">favorite</span></a>
         </div>
       </section>
-
       <ul class="categorias">
-        <li><a href="./pages/products/products.html">Roupas</a></li>
-        <li><a href="./pages/products/products.html">Cosméticos</a></li>
-        <li><a href="./pages/products/products.html">Materiais</a></li>
-        <li><a href="./pages/products/products.html">Artesanato</a></li>
-        <li><a href="./pages/products/products.html">Plantas</a></li>
-        <li><a href="./pages/products/products.html">Móveis</a></li>
+        <li><a href="./pages/products/products.html?category=clothes">Roupas</a></li>
+        <li><a href="./pages/products/products.html?category=cosmetics">Cosméticos</a></li>
+        <li><a href="./pages/products/products.html?category=materials">Materiais</a></li>
+        <li><a href="./pages/products/products.html?category=handmade">Artesanato</a></li>
+        <li><a href="./pages/products/products.html?category=plants">Plantas</a></li>
+        <li><a href="./pages/products/products.html?category=furniture">Móveis</a></li>
       </ul>
 
     </nav>
   </header>
   <main>
 
-  <section class="slide-container">
-    <div class="slide">
-      <img src="/imgs/img-descontos.png">
-      <div class="legenda">
-        <h2>Crie sua conta</h2>
-        <p>Faça login agora e tenha acesso a descontos de até 50% em todo site.</p>
+    <section class="slide-container">
+      <div class="slide">
+        <img src="/imgs/img-descontos.png">
+        <div class="legenda">
+          <h2>Crie sua conta</h2>
+          <p>Faça login agora e tenha acesso a descontos de até 50% em todo site.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="slide">
-      <img src="/imgs/img-frete.png">
-      <div class="legenda">
-        <h2>Frete Grátis</h2>
-        <p>Aproveite compras e devoluções gratuitas em nosso site.</p>
+      <div class="slide">
+        <img src="/imgs/img-frete.png">
+        <div class="legenda">
+          <h2>Frete Grátis</h2>
+          <p>Aproveite compras e devoluções gratuitas em nosso site.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="slide">
-      <img src="/imgs/img-essencia.jpg">
-      <div class="legenda">
-        <h2>Nossa Essência</h2>
-        <p>Amor, carinho e sustentabilidade em cada detalhe.</p>
+      <div class="slide">
+        <img src="/imgs/img-essencia.jpg">
+        <div class="legenda">
+          <h2>Nossa Essência</h2>
+          <p>Amor, carinho e sustentabilidade em cada detalhe.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="slide">
-      <img src="/imgs/img-excelencia.jpg">
-      <div class="legenda">
-        <h2>Excelência Verde</h2>
-        <p>Produtos de alta qualidade, ambientalmente conscientes.</p>
+      <div class="slide">
+        <img src="/imgs/img-excelencia.jpg">
+        <div class="legenda">
+          <h2>Excelência Verde</h2>
+          <p>Produtos de alta qualidade, ambientalmente conscientes.</p>
+        </div>
       </div>
-    </div>
 
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-  </section>
+    </section>
 
-  <div class="paginacao">
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
-    <span class="dot" onclick="currentSlide(4)"></span>
-  </div>
-
-
-  <aside id="cartAside" class="cart-aside">
-    <div class="carrinho-close">
-      <button class="close-button">X</button>
-      <h2>Carrinho</h2>
+    <div class="paginacao">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
     </div>
-    
-    <div class="container-cart">
-      <ul id="cartList"></ul>
-      <h4 id="subtotal-cartAside"></h4>
-      <a href="./pages/product-list/product-list.html" class="finish">Concluir compra</a>
+
+
+    <aside id="cartAside" class="cart-aside">
+      <div class="carrinho-close">
+        <button class="close-button">X</button>
+        <h2>Carrinho</h2>
+      </div>
+
+      <div class="container-cart">
+        <ul id="cartList"></ul>
+        <h4 id="subtotal-cartAside"></h4>
+        <a href="./pages/product-list/product-list.html" class="finish">Concluir compra</a>
+      </div>
+    </aside>
+    <div id="products-container" class="container"></div>
+    <div id="voltar-inicio">
+      <h2><a href="#navbar">Voltar ao Início</a></h2>
     </div>
-  </aside>
- <div id="products-container" class="container"></div>
- <div id="voltar-inicio">
-    <h2><a href="#navbar">Voltar ao Início</a></h2>
- </div>
-  <div id="cartPopup" class="cart-popup"></div>
+    <div id="cartPopup" class="cart-popup"></div>
   </main>
   <footer>
     <section>
@@ -129,10 +129,10 @@
         <li><a href="#">Ajuda</a></li>
       </ul>
       <ul id="redes-sociais">
-        <li><a href="#"><img src="./imgs/Icons/instagram.svg"/></a></li>
-        <li><a href="#"><img src="./imgs/Icons/facebook.svg"/></a></li>
-        <li><a href="#"><img src="./imgs/Icons/twitter.svg"/></a></li>
-        <li><a href="#"><img src="./imgs/Icons/tiktok.svg"/></a></li>
+        <li><a href="#"><img src="./imgs/Icons/instagram.svg" /></a></li>
+        <li><a href="#"><img src="./imgs/Icons/facebook.svg" /></a></li>
+        <li><a href="#"><img src="./imgs/Icons/twitter.svg" /></a></li>
+        <li><a href="#"><img src="./imgs/Icons/tiktok.svg" /></a></li>
       </ul>
     </section>
     <div id="direitos-reservados">

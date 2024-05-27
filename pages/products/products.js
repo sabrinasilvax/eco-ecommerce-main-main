@@ -1,45 +1,65 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
   initializeCart();
 });
 
-let lastValidSubtotal = 0.00;
+let lastValidSubtotal = 0.0;
 
 function renderProducts() {
   const container = document.getElementById("products-container");
-  container.innerHTML = '';
-  
-  products.forEach(product => {
-    const productCard = document.createElement("div");
-    productCard.className = "product-card";
+  container.innerHTML = "";
 
-    const stars = Array.from({ length: 5 }).map((_, index) => {
-      return `<span class="star">${index < Math.round(product.rating.rate) ? '★' : '☆'}</span>`;
-    }).join('');
+  const urlParams = new URLSearchParams(window.location.search);
+  const productCategory = urlParams.get("category");
 
-    productCard.innerHTML = `
-    <div class="container-sale" style="${product.sale === 0 ? 'display: none;' : ''}"><p>-${product.sale}%</p></div>
+  const product = products.find(
+    (product) => product.category === productCategory
+  );
+
+  if (product) {
+    products.forEach((product) => {
+      const productCard = document.createElement("div");
+      productCard.className = "product-card";
+
+      const stars = Array.from({ length: 5 })
+        .map((_, index) => {
+          return `<span class="star">${
+            index < Math.round(product.rating.rate) ? "★" : "☆"
+          }</span>`;
+        })
+        .join("");
+
+      productCard.innerHTML = `
+    <div class="container-sale" style="${
+      product.sale === 0 ? "display: none;" : ""
+    }"><p>-${product.sale}%</p></div>
     <img src="${product.image}" alt="${product.description}">
     <h2>${product.title}</h2>
     <div class="stars">${stars} (${product.rating.rate})</div>
     <p class="price">R$${product.price}</p>
 
     <div class="container-buttons">
-    <a href="../product-details/product-details.html?id=${product.id}"><button class="btn-hover-white")>Ver mais</button></a>
+    <a href="../product-details/product-details.html?id=${
+      product.id
+    }"><button class="btn-hover-white")>Ver mais</button></a>
     <div class="buttons">
-        <button class="add" onclick="handleAddToCart(${product.id})"><span class="material-symbols-outlined">
+        <button class="add" onclick="handleAddToCart(${
+          product.id
+        })"><span class="material-symbols-outlined">
         add_shopping_cart
         </span></button>
     </div>
     </div>
   `;
-    container.appendChild(productCard);
-  });
+      container.appendChild(productCard);
+    });
+  } else {
+    container.innerHTML = "<p>Produto não encontrado.</p>";
+  }
 }
 
 function handleAddToCart(productId) {
-  const product = products.find(p => p.id === productId);
+  const product = products.find((p) => p.id === productId);
   if (product) {
     store.addToCart(product);
     renderCart();
@@ -48,7 +68,7 @@ function handleAddToCart(productId) {
 }
 
 function handleRemoveFromCart(productId) {
-  const product = products.find(p => p.id === productId);
+  const product = products.find((p) => p.id === productId);
   if (product) {
     store.removeFromCart(product);
     renderCart();
@@ -75,10 +95,10 @@ function initializeCart() {
 function renderCart() {
   const cartList = document.getElementById("cartList");
   const subtotalElement = document.getElementById("subtotal-cartAside");
-  cartList.innerHTML = '';
-  
+  cartList.innerHTML = "";
+
   let subtotal = 0;
-  store.state.cart.forEach(product => {
+  store.state.cart.forEach((product) => {
     const cartItem = document.createElement("li");
     cartItem.innerHTML = `
     <section>
@@ -92,13 +112,13 @@ function renderCart() {
       <button class="remove" onclick="handleRemoveFromCart(${product.id})">X</button>
     </section>
   `;
-  
+
     cartList.appendChild(cartItem);
     subtotal += product.price * product.quantity;
   });
 
   if (isNaN(subtotal)) {
-    subtotal = lastValidSubtotal; 
+    subtotal = lastValidSubtotal;
   } else {
     lastValidSubtotal = subtotal;
   }
@@ -109,10 +129,10 @@ function renderCart() {
 
 function updateCartQuantities() {
   const quantityInputs = document.querySelectorAll(".quantity");
-  quantityInputs.forEach(input => {
+  quantityInputs.forEach((input) => {
     input.addEventListener("change", (e) => {
       const productId = parseInt(e.target.getAttribute("data-id"));
-      const product = products.find(p => p.id === productId);
+      const product = products.find((p) => p.id === productId);
       if (product) {
         const quantity = parseInt(e.target.value);
         store.updateCartQuantity(product, quantity);
@@ -123,19 +143,19 @@ function updateCartQuantities() {
 }
 
 function showPopup(message, isAdd) {
-  var popup = document.getElementById('cartPopup');
+  var popup = document.getElementById("cartPopup");
   popup.textContent = message;
-  
+
   if (isAdd) {
-      popup.classList.add('cartadd');
-      popup.classList.remove('cartremove');
+    popup.classList.add("cartadd");
+    popup.classList.remove("cartremove");
   } else {
-      popup.classList.add('cartremove');
-      popup.classList.remove('cartadd');
+    popup.classList.add("cartremove");
+    popup.classList.remove("cartadd");
   }
-  
-  popup.classList.add('show');
-  setTimeout(function() {
-      popup.classList.remove('show');
+
+  popup.classList.add("show");
+  setTimeout(function () {
+    popup.classList.remove("show");
   }, 3000);
 }
